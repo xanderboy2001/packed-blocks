@@ -9,6 +9,12 @@ repositories {
 	// Loom adds the essential maven repositories to download Minecraft and libraries from automatically.
 	// See https://docs.gradle.org/current/userguide/declaring_repositories.html
 	// for more information about repositories.
+  maven {
+    name = "TerraformersMC"
+    url = "https://maven.terraformersmc.com/"
+  }
+}
+
 sourceSets {
   gametest {
     compileClasspath += sourceSets.main.compileClasspath
@@ -45,6 +51,13 @@ dependencies {
 
 	// Fabric API. This is technically optional, but you probably want it anyway.
 	implementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
+
+  // Automatically downloads Mod Menu for local client runs
+  localRuntime "com.terraformersmc:modmenu:${project.modmenu_version}"
+
+  // Required for running automated tests through Fabric Loader
+  testImplementation "net.fabricmc:fabric-loader-junit:${project.loader_version}"
+}
 
 test {
   useJUnitPlatform()
