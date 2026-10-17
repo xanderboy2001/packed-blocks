@@ -1,6 +1,7 @@
 plugins {
 	id 'net.fabricmc.fabric-loom' version "${loom_version}"
 	id 'maven-publish'
+  id 'com.diffplug.spotless' version '8.10.4'
 }
 
 repositories {
@@ -110,4 +111,19 @@ publishing {
 		// The repositories here will be used for publishing your artifact, not for
 		// retrieving dependencies.
 	}
+}
+
+spotless {
+  java {
+    target 'src/*/java/**/*.java'
+    googleJavaFormat()
+    removeUnusedImports()
+    trimTrailingWhitespace()
+    endWithNewline()
+  }
+  groovy {
+    target 'src/*/groovy/**/*.groovy', '*.gradle'
+    trimTrailingWhitespace()
+    endWithNewline()
+  }
 }
