@@ -1,0 +1,23 @@
+name: Minecraft Dependency Updates
+
+on:
+  schedule:
+    - cron: "0 8 ** 1" # Runs every Monday at 8:00 AM UTC
+  workflow_dispatch: # Allows manual triggering from the GitHub Actions tab
+
+jobs:
+  depup:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v7
+
+      - name: Run MC-DepUp
+        uses: LucunJi/MC-DepUp@v0.1.2
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          # Automatically targets gradle.properties and reads .github/modding-dependencies.yml
