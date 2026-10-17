@@ -9,6 +9,13 @@ repositories {
 	// Loom adds the essential maven repositories to download Minecraft and libraries from automatically.
 	// See https://docs.gradle.org/current/userguide/declaring_repositories.html
 	// for more information about repositories.
+sourceSets {
+  gametest {
+    compileClasspath += sourceSets.main.compileClasspath
+    runtimeClasspath += sourceSets.main.runtimeClasspath
+    java.srcDir file('src/gametest/java')
+    resources.srcDir file('src/gametest/resources')
+  }
 }
 
 loom {
@@ -20,6 +27,15 @@ loom {
 			sourceSet sourceSets.client
 		}
 	}
+
+  runs {
+    // Automatically creates a dedicated gametest server run configuration
+    gameTestServer {
+      server()
+      name "Game Test Server"
+      sourceSet = sourceSets.gametest.name
+    }
+  }
 }
 
 dependencies {
@@ -29,6 +45,9 @@ dependencies {
 
 	// Fabric API. This is technically optional, but you probably want it anyway.
 	implementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
+
+test {
+  useJUnitPlatform()
 }
 
 processResources {

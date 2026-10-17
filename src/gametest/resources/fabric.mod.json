@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "packed_blocks_tests",
+  "version": "1.0.0",
+  "name": "Packed Blocks Game Tests",
+  "environment": "server",
+  "depends": {
+    "fabricloader": "*",
+    "minecraft": "*",
+    "packed_blocks": "*"
+  }
+}
