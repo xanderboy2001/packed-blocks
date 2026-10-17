@@ -11,7 +11,7 @@
 - repository: https://maven.fabricmc.net
   groupId: net.fabricmc
   artifactId: fabric-api
-  version: "${mcVersion}+*"
+  version: "*+${mcVersion}"
   properties:
     fabric_api_version:
       source: version
