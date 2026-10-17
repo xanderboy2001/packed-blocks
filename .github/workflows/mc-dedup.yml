@@ -18,6 +18,3 @@ jobs:
 
       - name: Run MC-DepUp
         uses: LucunJi/MC-DepUp@v0.1.2
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          # Automatically targets gradle.properties and reads .github/modding-dependencies.yml
