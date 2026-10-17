@@ -1,27 +1,26 @@
-dependencies:
-  # Fabric Loader
-  - repository: https://maven.fabricmc.net
-    groupId: net.fabricmc
-    artifactId: fabric-loader
-    version: "*"
-    properties:
-      loader_version:
-        source: version
+# Fabric Loader
+- repository: https://maven.fabricmc.net
+  groupId: net.fabricmc
+  artifactId: fabric-loader
+  version: "*"
+  properties:
+    loader_version:
+      source: version
 
-  # Fabric API
-  - repository: https://maven.fabricmc.net
-    groupId: net.fabricmc
-    artifactId: fabric-api
-    version: "${mcVersion}+*"
-    properties:
-      fabric_api_version:
-        source: version
+# Fabric API
+- repository: https://maven.fabricmc.net
+  groupId: net.fabricmc
+  artifactId: fabric-api
+  version: "${mcVersion}+*"
+  properties:
+    fabric_api_version:
+      source: version
 
-  # Mod Menu (via Modrinth Maven)
-  - repository: https://api.modrinth.com/maven
-    groupId: maven.modrinth
-    artifactId: modmenu
-    version: "*"
-    properties:
-      modmenu_version:
-        source: version
+# Mod Menu (via Modrinth Maven)
+- repository: https://api.modrinth.com/maven
+  groupId: maven.modrinth
+  artifactId: modmenu
+  version: "*"
+  properties:
+    modmenu_version:
+      source: version
