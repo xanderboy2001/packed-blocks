@@ -9,7 +9,7 @@
 
 # Fabric API
 - repository: https://maven.fabricmc.net
-  groupId: net.fabricmc
+  groupId: net.fabricmc.fabric-api
   artifactId: fabric-api
   version: "*+${mcVersion}"
   properties:
