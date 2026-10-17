@@ -20,6 +20,8 @@ jobs:
 
       - name: Run MC-DepUp
         uses: LucunJi/MC-DepUp@v0.1.2
+        with:
+          update_mc_patch: false
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v6
