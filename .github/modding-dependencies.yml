@@ -20,7 +20,7 @@
 - repository: https://api.modrinth.com/maven
   groupId: maven.modrinth
   artifactId: modmenu
-  version: "*"
+  version: "*+${mcVersion}"
   properties:
     modmenu_version:
       source: version
