@@ -1,10 +1,9 @@
 package io.github.xanderboy2001.packedblocks;
 
-import net.fabricmc.api.ModInitializer;
-import net.minecraft.resources.Identifier;
 import io.github.xanderboy2001.packedblocks.block.ModBlocks;
 import io.github.xanderboy2001.packedblocks.item.ModCreativeModeTabs;
-
+import net.fabricmc.api.ModInitializer;
+import net.minecraft.resources.Identifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

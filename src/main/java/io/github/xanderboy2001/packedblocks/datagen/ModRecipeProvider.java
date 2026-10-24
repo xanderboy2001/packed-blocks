@@ -1,9 +1,8 @@
 package io.github.xanderboy2001.packedblocks.datagen;
 
-import java.util.concurrent.CompletableFuture;
-
 import io.github.xanderboy2001.packedblocks.PackedBlocks;
 import io.github.xanderboy2001.packedblocks.block.ModBlocks;
+import java.util.concurrent.CompletableFuture;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.core.HolderLookup;
@@ -14,12 +13,14 @@ import net.minecraft.world.level.block.Block;
 
 public class ModRecipeProvider extends FabricRecipeProvider {
 
-  public ModRecipeProvider(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
+  public ModRecipeProvider(
+      FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
     super(output, registriesFuture);
   }
 
   @Override
-  protected RecipeProvider createRecipeProvider(HolderLookup.Provider registryLookup, RecipeOutput exporter) {
+  protected RecipeProvider createRecipeProvider(
+      HolderLookup.Provider registryLookup, RecipeOutput exporter) {
     return new RecipeProvider(registryLookup, exporter) {
       @Override
       public void buildRecipes() {
