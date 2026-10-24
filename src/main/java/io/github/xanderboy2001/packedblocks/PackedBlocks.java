@@ -3,6 +3,7 @@ package io.github.xanderboy2001.packedblocks;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.resources.Identifier;
 import io.github.xanderboy2001.packedblocks.block.ModBlocks;
+import io.github.xanderboy2001.packedblocks.item.ModCreativeModeTabs;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,6 +16,7 @@ public class PackedBlocks implements ModInitializer {
   public void onInitialize() {
     LOGGER.info("Initializing Packed Blocks!");
     ModBlocks.initialize();
+    ModCreativeModeTabs.registerCreativeModeTabs();
   }
 
   public static Identifier id(String path) {
