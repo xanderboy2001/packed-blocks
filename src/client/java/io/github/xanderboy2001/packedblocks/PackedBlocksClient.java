@@ -1,4 +1,4 @@
-package io.github.xanderboy2001.packedblocks.client;
+package io.github.xanderboy2001.packedblocks;
 
 import net.fabricmc.api.ClientModInitializer;
 
