@@ -15,6 +15,9 @@
   "entrypoints": {
     "main": ["io.github.xanderboy2001.packedblocks.PackedBlocks"],
     "client": ["io.github.xanderboy2001.packedblocks.PackedBlocksClient"],
+    "fabric-datagen": [
+      "io.github.xanderboy2001.packedblocks.datagen.ModDataGenerator"
+    ]
   },
   "depends": {
     "fabricloader": ">=0.19.5",
