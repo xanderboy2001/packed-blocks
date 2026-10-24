@@ -1,0 +1,6 @@
+{
+  "parent": "packedblocks:block/packed_cube",
+  "textures": {
+    "base": "minecraft:block/dirt"
+  }
+}
