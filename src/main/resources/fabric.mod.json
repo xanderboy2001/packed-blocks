@@ -3,11 +3,12 @@
   "id": "packedblocks",
   "version": "${version}",
   "name": "Packed Blocks",
-  "description": "A Fabric mod adding compressed blocks.",
-  "authors": ["Alexander Christian"],
+  "description": "A lightweight, vanilla-friendly Fabric mod adding compressed storage blocks for common resources like Cobblestone, Dirt, and Netherrack.",
+  "authors": ["xanderboy2001"],
   "contact": {
     "homepage": "https://github.com/xanderboy2001/packed-blocks",
-    "sources": "https://github.com/xanderboy2001/packed-blocks"
+    "sources": "https://github.com/xanderboy2001/packed-blocks",
+    "issues": "https://github.com/xanderboy2001/packed-blocks/issues"
   },
   "license": "CC0-1.0",
   "icon": "assets/packedblocks/icon.png",
@@ -20,9 +21,9 @@
     ]
   },
   "depends": {
-    "fabricloader": ">=0.19.5",
+    "fabricloader": ">=0.20.0",
     "minecraft": "~26.2",
     "java": ">=25",
-    "fabric-api": "*"
+    "fabric-api": ">=0.161.0"
   }
 }

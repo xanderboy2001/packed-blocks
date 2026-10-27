@@ -7,6 +7,6 @@
   "depends": {
     "fabricloader": "*",
     "minecraft": "*",
-    "packed_blocks": "*"
+    "packedblocks": "*"
   }
 }
