@@ -1,9 +1,8 @@
 package io.github.xanderboy2001.packedblocks.datagen;
 
-import java.util.concurrent.CompletableFuture;
-
 import io.github.xanderboy2001.packedblocks.PackedBlocks;
 import io.github.xanderboy2001.packedblocks.block.ModBlocks;
+import java.util.concurrent.CompletableFuture;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagsProvider;
 import net.minecraft.core.HolderLookup;
@@ -22,7 +21,8 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
   @Override
   protected void addTags(HolderLookup.Provider registries) {
     for (ModBlocks.PackedBlockEntry entry : ModBlocks.BLOCKS_TO_PACK) {
-      ResourceKey<Block> packedKey = ResourceKey.create(Registries.BLOCK, PackedBlocks.id(entry.name()));
+      ResourceKey<Block> packedKey =
+          ResourceKey.create(Registries.BLOCK, PackedBlocks.id(entry.name()));
 
       for (TagKey<Block> tag : entry.tags()) {
         builder(tag).add(packedKey);
