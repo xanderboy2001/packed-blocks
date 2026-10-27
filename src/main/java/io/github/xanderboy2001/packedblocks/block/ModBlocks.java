@@ -27,20 +27,27 @@ public class ModBlocks {
    * @param baseBlock the vanilla block that gets packed
    * @param tags block tags the packed block should be in (mining tool and tier tags)
    */
-  public record PackedBlockEntry(String name, Block baseBlock, List<TagKey<Block>> tags) {
+  public record PackedBlockEntry(
+      String name, Block baseBlock, float hardness, float resistance, List<TagKey<Block>> tags) {
     @SafeVarargs
-    public static PackedBlockEntry of(String name, Block baseBlock, TagKey<Block>... tags) {
-      return new PackedBlockEntry(name, baseBlock, List.of(tags));
+    public static PackedBlockEntry of(
+        String name, Block baseBlock, float hardness, float resistance, TagKey<Block>... tags) {
+      return new PackedBlockEntry(name, baseBlock, hardness, resistance, List.of(tags));
     }
   }
 
   public static final List<PackedBlockEntry> BLOCKS_TO_PACK =
       List.of(
           PackedBlockEntry.of(
-              "packed_cobblestone", Blocks.COBBLESTONE, BlockTags.MINEABLE_WITH_PICKAXE),
-          PackedBlockEntry.of("packed_dirt", Blocks.DIRT, BlockTags.MINEABLE_WITH_SHOVEL),
+              "packed_cobblestone",
+              Blocks.COBBLESTONE,
+              3.0F,
+              8.0F,
+              BlockTags.MINEABLE_WITH_PICKAXE),
           PackedBlockEntry.of(
-              "packed_netherrack", Blocks.NETHERRACK, BlockTags.MINEABLE_WITH_PICKAXE));
+              "packed_dirt", Blocks.DIRT, 1.0F, 1.5F, BlockTags.MINEABLE_WITH_SHOVEL),
+          PackedBlockEntry.of(
+              "packed_netherrack", Blocks.NETHERRACK, 1.0F, 1.5F, BlockTags.MINEABLE_WITH_PICKAXE));
 
   public static final Map<String, Block> PACKED_BLOCK_MAP = new LinkedHashMap<>();
 
@@ -71,7 +78,8 @@ public class ModBlocks {
       BlockItemId blockItemId = BlockItemId.create(id, id);
 
       BlockBehaviour.Properties properties =
-          BlockBehaviour.Properties.ofFullCopy(entry.baseBlock()).strength(3.0F, 8.0F);
+          BlockBehaviour.Properties.ofFullCopy(entry.baseBlock())
+              .strength(entry.hardness, entry.resistance);
 
       Block block = register(blockItemId, Block::new, properties);
       PACKED_BLOCK_MAP.put(entry.name(), block);
