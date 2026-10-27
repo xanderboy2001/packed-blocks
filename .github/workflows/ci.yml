@@ -2,7 +2,7 @@ name: Continuous Integration
 
 on:
   push:
-    branches: ["**"]
+    branches: ["main"]
   pull_request:
     branches: ["**"]
 
@@ -27,6 +27,15 @@ jobs:
 
       - name: Run Spotless Check & Build
         run: ./gradlew spotlessCheck build
+
+      - name: Run Datagen & Check for Drift
+        run: |
+          ./gradlew runDatagen
+          if [[ -n $(git status --porcelain src/main/generated) ]]; then
+            echo "Error: Generated files are out of sync with the code! Run ./gradlew runDatagen and commit the changes."
+            git diff src/main/generated
+            exit 1
+          fi
 
       - name: Capture Build Artifacts
         uses: actions/upload-artifact@v7

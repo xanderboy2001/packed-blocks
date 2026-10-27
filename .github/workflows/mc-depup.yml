@@ -26,7 +26,7 @@ jobs:
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v8
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.GH_PAT }}
           commit-message: "chore(deps): update Minecraft mod dependencies"
           title: "chore(deps): automated dependency updates via MC-DepUp"
           body: "Automated dependency updates triggered by MC-DepUp."
