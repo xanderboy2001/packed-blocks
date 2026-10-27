@@ -1,7 +1,7 @@
 package io.github.xanderboy2001.packedblocks.block;
 
 import io.github.xanderboy2001.packedblocks.PackedBlocks;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
@@ -10,6 +10,8 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.references.BlockItemId;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -18,15 +20,29 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 
 public class ModBlocks {
 
-  public record PackedBlockEntry(String name, Block baseBlock) {}
+  /**
+   * A packed block definition.
+   *
+   * @param name registry path of the packed block
+   * @param baseBlock the vanilla block that gets packed
+   * @param tags block tags the packed block should be in (mining tool and tier tags)
+   */
+  public record PackedBlockEntry(String name, Block baseBlock, List<TagKey<Block>> tags) {
+    @SafeVarargs
+    public static PackedBlockEntry of(String name, Block baseBlock, TagKey<Block>... tags) {
+      return new PackedBlockEntry(name, baseBlock, List.of(tags));
+    }
+  }
 
   public static final List<PackedBlockEntry> BLOCKS_TO_PACK =
       List.of(
-          new PackedBlockEntry("packed_cobblestone", Blocks.COBBLESTONE),
-          new PackedBlockEntry("packed_dirt", Blocks.DIRT),
-          new PackedBlockEntry("packed_netherrack", Blocks.NETHERRACK));
+          PackedBlockEntry.of(
+              "packed_cobblestone", Blocks.COBBLESTONE, BlockTags.MINEABLE_WITH_PICKAXE),
+          PackedBlockEntry.of("packed_dirt", Blocks.DIRT, BlockTags.MINEABLE_WITH_SHOVEL),
+          PackedBlockEntry.of(
+              "packed_netherrack", Blocks.NETHERRACK, BlockTags.MINEABLE_WITH_PICKAXE));
 
-  public static final Map<String, Block> PACKED_BLOCK_MAP = new HashMap<>();
+  public static final Map<String, Block> PACKED_BLOCK_MAP = new LinkedHashMap<>();
 
   private static Block register(
       ResourceKey<Block> id,
